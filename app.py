@@ -255,14 +255,9 @@ def viewinghistory():
         
         return flask.render_template('viewinghistory.html', rows=rows, historymsg="%s's transaction history."%(name))
     return flask.render_template('viewinghistory.html', rows=[], historymsg=historymsg)
-rng = random.randint(1,20)
-pork = 11000+rng
 
 if __name__ == '__main__':
-    app.run(port = pork, debug=False)
-
-app.run(debug=False)
-
+    app.run(debug=True, use_reloader=True)
 
 
 
