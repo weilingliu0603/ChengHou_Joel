@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+    <head>
+	<title>JP Beauty Salon</title>
+	<!--<link rel="stylesheet" href="styles.css">-->
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='stylesV3.css') }}">
+	</head>
+	
+    <body>
+        <header>
+            <a href="{{url_for('home')}}"><img src="{{ url_for('static', filename='JPJCLogo.jpeg') }}" width="100" height=""/> </a>
+            <nav>
+                <ul class="linking">
+					<li><a href="{{url_for('addmember')}}">Add Member</a></li>
+					<li><a href="{{url_for('updatemember')}}">Update Member</a></li>
+					<li><a href="{{url_for('addtransaction')}}">Add Transaction</a></li>
+					<li><a href="{{url_for('viewtransaction')}}">View Daily Transactions</a></li>
+					<li><a href="{{url_for('viewrevenue')}}">View Monthly Revenue</a></li>
+					<li><a href="{{url_for('viewhistory')}}">View Transaction History</a></li>
+				</ul>
+            </nav>
+            
+        </header>
+		
+		<p><img src="{{ url_for('static', filename='JPLogo.jpg') }}" width="486" height="112" /></p>
+       
+    </body>
+
+
+<div id="mainContent">
+
+    <br>
+    <p><strong>Create a new transaction! Transactions to date: {{ nooftransactions }}</strong></p>
+
+	<form action="{{ url_for('addedtransaction') }}" method="POST">
+
+    Name&ensp;&ensp;&ensp;&ensp; <input name = 'name' placeholder = "Customer's Name">
+	<br><br> <!--enspace only takes up 0.5pt-->
+	<input type="radio" id="member" name="memberornot" value="Yes">
+	<label for="member">Member</label><br>
+	<input type="radio" id="notmember" name="memberornot" value="No">
+	<label for="notmember">Non-Member</label><br>
+	<br>
+	MemberID&ensp;&ensp; <input name = 'MemberID' placeholder = "MemberID (if any)"> 
+	<br><br>
+	Services<br>
+	<input type="checkbox" id="s1" name="svc" value="Cut (short length)">
+	<label for="s1">Cut (short length)</label><br>
+	<input type="checkbox" id="s2" name="svc" value="Cut (medium length)">
+	<label for="s2">Cut (medium length)</label><br>
+	<input type="checkbox" id="s3" name="svc" value="Cut (long length)">
+	<label for="s3">Cut (long length)</label><br>
+	<input type="checkbox" id="s4" name="svc" value="Colour">
+	<label for="s4">Colour</label><br>
+	<input type="checkbox" id="s5" name="svc" value="Highlight (half head)">
+	<label for="s5">Highlight (half head)</label><br>
+	<input type="checkbox" id="s6" name="svc" value="Highlight (full head)">
+	<label for="s6">Highlight (full head)</label><br>
+	<input type="checkbox" id="s7" name="svc" value="Perm">
+	<label for="s7">Perm</label><br>
+	<input type="checkbox" id="s8" name="svc" value="Rebonding">
+	<label for="s8">Rebonding</label><br>
+	<input type="checkbox" id="s9" name="svc" value="Treatment">
+	<label for="s9">Treatment</label><br>
+	<br><br>
+   
+    <input type="submit" value = "Create">
+    </form>
+	<br>
+	<form action="{{ url_for('home') }}">
+		<input type="submit" value="Go to Home">
+	</form>
+    <p>&nbsp;</p> <!--non break space-->
+    <p>&nbsp;</p>
+</div>
+  
+
+
+</html>

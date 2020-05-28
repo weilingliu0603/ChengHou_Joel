@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+    <head>
+	<title>JP Beauty Salon</title>
+	<!--<link rel="stylesheet" href="styles.css">-->
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='stylesV3.css') }}">
+	</head>
+	
+    <body>
+        <header>
+            <a href="{{url_for('home')}}"><img src="{{ url_for('static', filename='JPJCLogo.jpeg') }}" width="100" height=""/> </a>
+            <nav>
+                <ul class="linking">
+					<li><a href="{{url_for('addmember')}}">Add Member</a></li>
+					<li><a href="{{url_for('updatemember')}}">Update Member</a></li>
+					<li><a href="{{url_for('addtransaction')}}">Add Transaction</a></li>
+					<li><a href="{{url_for('viewtransaction')}}">View Daily Transactions</a></li>
+					<li><a href="{{url_for('viewrevenue')}}">View Monthly Revenue</a></li>
+					<li><a href="{{url_for('viewhistory')}}">View Transaction History</a></li>
+				</ul>
+            </nav>
+            
+        </header>
+		
+		<p><img src="{{ url_for('static', filename='JPLogo.jpg') }}" width="486" height="112" /></p>
+       
+    </body>
+
+<div id="mainContent">
+
+    <br>
+	<form action="{{ url_for('viewinghistory') }}" method="POST">
+
+    MemberID&ensp;&ensp; <input name = 'memberid' placeholder = "Enter MemberID">
+	<br><br> <!--enspace only takes up 0.5pt-->
+
+
+    <input type="submit" value = "Enter">
+    </form>
+	<br>
+	<form action="{{ url_for('home') }}">
+		<input type="submit" value="Go to Home">
+	</form>
+    <p>&nbsp;</p> <!--non break space-->
+    <p>&nbsp;</p>
+</div>
+  
+
+
+</html>

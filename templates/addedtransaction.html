@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+    <head>
+	<title>JP Beauty Salon</title>
+	<!--<link rel="stylesheet" href="styles.css">-->
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='stylesV3.css') }}">
+	</head>
+	
+    <body>
+        <header>
+            <a href="{{url_for('home')}}"><img src="{{ url_for('static', filename='JPJCLogo.jpeg') }}" width="100" height=""/> </a>
+            <nav>
+                <ul class="linking">
+					<li><a href="{{url_for('addmember')}}">Add Member</a></li>
+					<li><a href="{{url_for('updatemember')}}">Update Member</a></li>
+					<li><a href="{{url_for('addtransaction')}}">Add Transaction</a></li>
+					<li><a href="{{url_for('viewtransaction')}}">View Daily Transactions</a></li>
+					<li><a href="{{url_for('viewrevenue')}}">View Monthly Revenue</a></li>
+					<li><a href="{{url_for('viewhistory')}}">View Transaction History</a></li>
+				</ul>
+            </nav>
+            
+        </header>
+		
+		<p><img src="{{ url_for('static', filename='JPLogo.jpg') }}" width="486" height="112" /></p>
+       
+    </body>
+
+<div id="mainContent">
+	<p>{{ createmsg }}
+	</p>
+	<p>Invoice for this transaction:</p>
+	</table>
+	
+	
+	<table border="2" bgcolor = "#48AAAD" bordercolor = "#016064" border-spacing: 2px>
+        <tr bgcolor="016064">
+			<td><font color="#151E3D"><div align="center"><strong>JP SALON INVOICE</strong></div></td>
+			<<td><font color="#151E3D"><div align="center"><strong>JPJC</strong></div></td>
+        </tr>
+		<tr bgcolor="016064">
+			<td><font color="#151E3D"><div align="center"><strong>Invoice Number: {{invoicenumber}}</strong></div></td>
+			<td><font color="#151E3D"><div align="center"><strong>Date: {{date}}</strong></div></td>
+        </tr>
+		<tr bgcolor="016064">
+			<td><font color="#151E3D"><div align="center"><strong>Customer Name: {{name}}}</strong></div></td>
+			<td><font color="#151E3D"><div align="center"><strong>MemberID: {{memberid}}</strong></div></td>
+        </tr>
+		<tr bgcolor="016064">
+			<td><font color="#151E3D"><div align="center"><strong>Type of service</strong></div></td>
+			<td><font color="#151E3D"><div align="center"><strong>Price</strong></div></td>
+        </tr>
+			
+		{% for row in rows %}
+ 
+		<tr>
+	  
+			<td font color="#022D36">{{ row[0] }}</td>
+			<td font color="#022D36">{{ row[1] }}</td>
+     
+		</tr>
+		{% endfor %}
+		<tr>
+		<td><font color="#151E3D"><div align="center"><strong>Discount</strong></div></td>
+		<td><font color="#151E3D"><div align="center"><strong>{{discount}}</strong></div></td>
+		</tr>
+		<tr>
+		<td><font color="#151E3D"><div align="center"><strong>Total payable</strong></div></td>
+		<td><font color="#151E3D"><div align="center"><strong>{{payable}}</strong></div></td>
+		</tr>
+	</table>
+	
+	
+	<br><br>
+	<form action="{{ url_for('addtransaction') }}">
+		<input type="submit" value="Add Another Transaction">
+	</form>
+	<br>
+    <form action="{{ url_for('home') }}">
+		<input type="submit" value="Go to Home">
+	</form>
+</div>
+
+
+</html>
